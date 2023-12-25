@@ -49,12 +49,12 @@ export const sessionCurrent = (req, res) => {
     // Verifica si el usuario está autenticado
     if (req.isAuthenticated()) {
       // Obtiene la información del usuario actual desde la sesión
-      const { first_name, last_name, email, role } = req.user;
+      const { first_name, last_name, email, role, cartId, isGithub } = req.user;
 
       // Devuelve la información del usuario actual en la respuesta
       res.status(200).json({
         message: "Usuario autenticado",
-        user: { first_name, last_name, email, role },
+        user: { first_name, last_name, email, role, cartId, isGithub},
       });
     } else {
       // Si el usuario no está autenticado, devuelve un mensaje de error
