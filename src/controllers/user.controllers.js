@@ -51,17 +51,14 @@ export const sessionCurrent = (req, res) => {
       // Obtiene la información del usuario actual desde la sesión
       const { first_name, last_name, email, role, cartId, isGithub } = req.user;
 
-      // Devuelve la información del usuario actual en la respuesta
       res.status(200).json({
         message: "Usuario autenticado",
         user: { first_name, last_name, email, role, cartId, isGithub},
       });
     } else {
-      // Si el usuario no está autenticado, devuelve un mensaje de error
       res.status(401).json({ error: "Usuario no autenticado" });
     }
   } catch (error) {
-    // Manejo de errores
     console.error("Error al obtener la sesión actual:", error);
     res.status(500).json({ error: "Error al obtener la sesión actual" });
   }
